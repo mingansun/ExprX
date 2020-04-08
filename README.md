@@ -20,7 +20,8 @@ library(ExprX)
 ## How to use ExprX
 Please refer to the Vignette about how to use __ExprX__ to perform interspecies differential
 expression analysis. The PDF version of Vignette can be downloaded from:
-https://github.com/mingansun/ExprX
+
+https://github.com/mingansun/ExprX/blob/master/inst/doc/ExprX-vignette.pdf
 
 ## Citation:
 Ming-an Sun et al., ExprX - an R package to streamline interspe-cies differential gene expression analysis.
