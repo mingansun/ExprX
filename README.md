@@ -19,7 +19,7 @@ library(ExprX)
 
 ## How to use ExprX
 Please refer to the Vignette about how to use __ExprX__ to perform interspecies differential
-expression analysis:
+expression analysis. The PDF version of Vignette can be downloaded from:
 https://github.com/mingansun/ExprX
 
 ## Citation:
