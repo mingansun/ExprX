@@ -24,4 +24,4 @@ expression analysis. The PDF version of Vignette can be downloaded from:
 https://github.com/mingansun/ExprX/blob/master/inst/doc/ExprX-vignette.pdf
 
 ## Citation:
-Ming-an Sun et al., ExprX - an R package to streamline interspe-cies differential gene expression analysis.
+Ming-an Sun et al., ExprX - an R package to streamline interspecies differential gene expression analysis.
