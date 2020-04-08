@@ -8,11 +8,13 @@ data normalization, differential analysis and visualization) are described below
 
 Use the __install_git__ function from devtools package to install __ExprX__ from
 GitHub:
-
+---
 library(devtools)
+
 install_git("https://github.com/mingansun/ExprX")
 
 To load the ExprX package:
+---
 library(ExprX)
 
 Citation:
