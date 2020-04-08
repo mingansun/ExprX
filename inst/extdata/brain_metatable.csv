@@ -1,0 +1,7 @@
+File,Species,FullName,AbbrName,IdColumn,ExprColumn,ExprType,RepIndex
+human_brain_1.genes.results,human,Homo Sapiens,hsapiens,1,6,tpm,1
+human_brain_2.genes.results,human,Homo Sapiens,hsapiens,1,6,tpm,2
+human_brain_3.genes.results,human,Homo Sapiens,hsapiens,1,6,tpm,3
+mouse_brain_1.genes.results,mouse,mmusculus,mmusculus,1,6,tpm,1
+mouse_brain_2.genes.results,mouse,mmusculus,mmusculus,1,6,tpm,2
+mouse_brain_3.genes.results,mouse,mmusculus,mmusculus,1,6,tpm,3

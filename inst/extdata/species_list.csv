@@ -1,0 +1,10 @@
+Species,FullName,AbbrName,Group
+human,Homo Sapiens,hsapiens,animal:vertebrate:mammals
+chimpanzee,ptroglodytes,ptroglodytes,animal:vertebrate:mammals
+macaque,Macaca mulatta,mmulatta,animal:vertebrate:mammals
+mouse,mmusculus,mmusculus,animal:vertebrate:mammals
+rat,rnorvegicus,rnorvegicus,animal:vertebrate:mammals
+chicken,ggallus,ggallus,animal:vertebrate
+zebrafish,Danio renio,drerio,animal:vertebrate
+fruit fly,Drosophila melanogaster,dmelanogaster,animal:invertebrate
+worm,Caenorhabditis elegans,celegans,animal:invertebrate

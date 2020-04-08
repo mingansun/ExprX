@@ -1,0 +1,31 @@
+#' ExprX: a package for interspecies differential expression analysis
+#'
+#' The package performs several steps for interspecies differential analysis
+#' ortholog matching, normalization, differential calling, visualization.
+#'
+#' @section ExprX functions:
+#'
+#' \code{\link{ortholog_match}}
+#' Match the 1-to-1 orthologs among species
+#'
+#' \code{\link{ortholog_filter}}
+#' Filter orthologs based on genetype, chromosome, gene list, etc
+#'
+#' \code{\link{make_ExprX_dataset}}
+#' Create ExprX object with expression data for multiple species
+#'
+#' \code{\link{ortholog_expression_merge}}
+#' Integrate 1-to-1 ortholog annotation to ExprX object
+#'
+#' \code{\link{ortholog_expression_normalize}}
+#' Integrate normalized expression data to ExprX object
+#'
+#' \code{\link{ortholog_expression_compare}}
+#' Perform interspecies differential expression analysis for 1-to-1 orthologs
+#'
+#' \code{\link{ortholog_expression_plot}}
+#' Visualize interspecies differential analysis results
+#'
+#' @docType package
+#' @name ExprX-package
+NULL
