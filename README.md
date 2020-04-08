@@ -6,6 +6,7 @@ demonstrates how to detect differentially expressed genes among species
 using ExprX package. All essential steps (eg. data import, ortholog matching,
 data normalization, differential analysis and visualization) are described below.
 
+## install ExpRX
 Use the __install_git__ function from devtools package to install __ExprX__ from
 GitHub:
 ---
@@ -17,5 +18,6 @@ To load the ExprX package:
 ---
 library(ExprX)
 
-Citation:
+## Citation:
+---
 Ming-an Sun et al., ExprX - an R package to streamline interspe-cies differential gene expression analysis.
