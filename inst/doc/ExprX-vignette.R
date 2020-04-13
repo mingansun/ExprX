@@ -8,10 +8,10 @@ knitr::opts_chunk$set(
 #  # install several dependent packages from Bioconductor using BiocManager
 #  install.packages("BiocManager")
 #  BiocManager::install(c("biomaRt", "edgeR", "RankProd"))
+#  
 #  # install ExprX from GitHub using devtools
 #  install.packages("devtools")
-#  library(devtools)
-#  install_git("https://github.com/mingansun/ExprX")
+#  devtools::install_git("https://github.com/mingansun/ExprX")
 
 ## ----setup--------------------------------------------------------------------
 library(ExprX)

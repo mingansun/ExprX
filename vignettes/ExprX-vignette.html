@@ -317,10 +317,10 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install several dependent packages from Bioconductor using BiocManager</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a>
 <a class="sourceLine" id="cb1-3" title="3">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="kw">c</span>(<span class="st">&quot;biomaRt&quot;</span>, <span class="st">&quot;edgeR&quot;</span>, <span class="st">&quot;RankProd&quot;</span>))</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co"># install ExprX from GitHub using devtools</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(devtools)</a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="kw">install_git</span>(<span class="st">&quot;https://github.com/mingansun/ExprX&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co"># install ExprX from GitHub using devtools</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" title="7">devtools<span class="op">::</span><span class="kw">install_git</span>(<span class="st">&quot;https://github.com/mingansun/ExprX&quot;</span>)</a></code></pre></div>
 <p>To load the ExprX package:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(ExprX)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Welcome to use ExprX!</span></a></code></pre></div>
