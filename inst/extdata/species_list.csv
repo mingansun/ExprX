@@ -1,10 +1,203 @@
-Species,FullName,AbbrName,Group
-human,Homo Sapiens,hsapiens,animal:vertebrate:mammals
-chimpanzee,ptroglodytes,ptroglodytes,animal:vertebrate:mammals
-macaque,Macaca mulatta,mmulatta,animal:vertebrate:mammals
-mouse,mmusculus,mmusculus,animal:vertebrate:mammals
-rat,rnorvegicus,rnorvegicus,animal:vertebrate:mammals
-chicken,ggallus,ggallus,animal:vertebrate
-zebrafish,Danio renio,drerio,animal:vertebrate
-fruit fly,Drosophila melanogaster,dmelanogaster,animal:invertebrate
-worm,Caenorhabditis elegans,celegans,animal:invertebrate
+Dataset,Species,Version
+acalliptera,Eastern happy,fAstCal1.2
+acarolinensis,Anole lizard,AnoCar2.0
+acchrysaetos,Golden eagle,bAquChr1.2
+acitrinellus,Midas cichlid,Midas_v5
+amelanoleuca,Panda,ailMel1
+amexicanus,Mexican tetra,Astyanax_mexicanus-2.0
+ampachon,Pachon cavefish,Astyanax_mexicanus-1.0.2
+anancymaae,Ma's night monkey,Anan_2.0
+applatyrhynchos,Duck,CAU_duck1.0
+atestudineus,Climbing perch,fAnaTes1.1
+bbbison,American bison,Bison_UMD1.0
+bgrunniens,Domestic yak,LU_Bosgru_v3.0
+bihybrid,Hybrid - Bos Indicus,UOA_Brahman_1
+bmutus,Wild yak,BosGru_v2.0
+bsplendens,Siamese fighting fish,fBetSpl5.2
+btaurus,Cow,ARS-UCD1.2
+bthybrid,Hybrid - Bos Taurus,UOA_Angus_1
+cabingdonii,Abingdon island giant tortoise,ASM359739v1
+capalliatus,Angola colobus,Cang.pa_1.0
+caperea,Brazilian guinea pig,CavAp1.0
+catys,Sooty mangabey,Caty_1.0
+ccanadensis,American beaver,C.can_genome_v1.0
+ccapucinus,Capuchin,Cebus_imitator-1.0
+cdromedarius,Arabian camel,CamDro2
+celegans,Caenorhabditis elegans,WBcel235
+cfamiliaris,Dog,CanFam3.1
+cgchok1gshd,Chinese hamster CHOK1GS,CHOK1GS_HDv1
+cgcrigri,Chinese hamster CriGri,CriGri_1.0
+cgobio,Channel bull blenny,fCotGob3.1
+cgpicr,Chinese hamster PICR,CriGri-PICR
+charengus,Atlantic herring,Ch_v2.0.2
+chircus,Goat,ARS1
+choffmanni,Sloth,choHof1
+cintestinalis,C.intestinalis,KH
+cjacchus,Marmoset,ASM275486v1
+cjaponica,Japanese quail,Coturnix_japonica_2.0
+clanigera,Long-tailed chinchilla,ChiLan1.0
+cldingo,Dingo,ASM325472v1
+cmilii,Elephant shark,Callorhinchus_milii-6.1.3
+cpbellii,Painted turtle,Chrysemys_picta_bellii-3.0.3
+cporcellus,Guinea Pig,Cavpor3.0
+cporosus,Australian saltwater crocodile,CroPor_comp1
+csabaeus,Vervet-AGM,ChlSab1.1
+csavignyi,C.savignyi,CSAV 2.0
+csemilaevis,Tongue sole,Cse_v1.0
+csyrichta,Tarsier,Tarsius_syrichta-2.0.1
+cvariegatus,Sheepshead minnow,C_variegatus-1.0
+dclupeoides,Denticle herring,fDenClu1.1
+dmelanogaster,Drosophila melanogaster,BDGP6.28
+dnovaehollandiae,Emu,droNov1
+dnovemcinctus,Armadillo,Dasnov3.0
+dordii,Kangaroo rat,Dord_2.0
+drerio,Zebrafish,GRCz11
+eaasinus,Donkey,ASM303372v1
+eburgeri,Hagfish,Eburgeri_3.2
+ecaballus,Horse,EquCab3.0
+ecalabaricus,Reedfish,fErpCal1.1
+eelectricus,Electric eel,Ee_SOAP_WITH_SSPACE
+eeuropaeus,Hedgehog,eriEur1
+elucius,Northern pike,Eluc_V3
+enaucrates,Live sharksucker,fEcheNa1.1
+etelfairi,Lesser hedgehog tenrec,TENREC
+falbicollis,Flycatcher,FicAlb_1.4
+fcatus,Cat,Felis_catus_9.0
+fdamarensis,Damara mole rat,DMR_v1.0
+fheteroclitus,Mummichog,Fundulus_heteroclitus-3.0.2
+gaculeatus,Stickleback,BROAD S1
+gagassizii,Agassiz's desert tortoise,ASM289641v1
+ggallus,Chicken,GRCg6a
+ggorilla,Gorilla,gorGor4
+gmorhua,Cod,gadMor1
+gwilldenowi,Blunt-snouted clingfish,fGouWil2.1
+hburtoni,Burton's mouthbrooder,AstBur1.0
+hcomes,Tiger tail seahorse,H_comes_QL1_v1
+hgfemale,Naked mole-rat female,HetGla_female_1.0
+hgmale,Naked mole-rat male,HetGla_1.0
+hhucho,Huchen,ASM331708v1
+hsapiens,Human,GRCh38.p13
+ipunctatus,Channel catfish,IpCoco_1.2
+itridecemlineatus,Squirrel,SpeTri2.0
+jhyemalis,Dark-eyed junco,ASM382977v1
+jjaculus,Lesser Egyptian jerboa,JacJac1.0
+lafricana,Elephant,Loxafr3.0
+lbergylta,Ballan wrasse,BallGen_V1
+lcalcarifer,Barramundi perch,ASB_HGAPassembly_v1
+lcanadensis,Canada lynx,mLynCan4_v1.p
+lchalumnae,Coelacanth,LatCha1
+lcoronata,Blue-crowned manakin,Lepidothrix_coronata-1.0
+lcrocea,Large yellow croaker,L_crocea_2.0
+loculatus,Spotted gar,LepOcu1
+lsdomestica,Bengalese finch,LonStrDom1
+malbus,Swamp eel,M_albus_1.0
+marmatus,Zig-zag eel,fMasArm1.1
+mauratus,Golden Hamster,MesAur1.0
+mcaroli,Ryukyu mouse,CAROLI_EIJ_v1.1
+mdomestica,Opossum,ASM229v1
+mfascicularis,Crab-eating macaque,Macaca_fascicularis_5.0
+mgallopavo,Turkey,Turkey_2.01
+mleucophaeus,Drill,Mleu.le_1.0
+mlucifugus,Microbat,Myoluc2.0
+mmmarmota,Alpine marmot,marMar2.1
+mmulatta,Macaque,Mmul_10
+mmurdjan,Pinecone soldierfish,fMyrMur1.1
+mmurinus,Mouse Lemur,Mmur_3.0
+mmusculus,Mouse,GRCm38.p6
+mnemestrina,Pig-tailed macaque,Mnem_1.0
+mochrogaster,Prairie vole,MicOch1.0
+mpahari,Shrew mouse,PAHARI_EIJ_v1.1
+mpfuro,Ferret,MusPutFur1.0
+mspicilegus,Steppe mouse,MUSP714
+mspretus,Algerian mouse,SPRET_EiJ_v1
+mundulatus,Budgerigar,Melopsittacus_undulatus_6.3
+munguiculatus,Mongolian gerbil,MunDraft-v1.0
+mvitellinus,Golden-collared manakin,ASM171598v2
+mzebra,Zebra mbuna,M_zebra_UMD2a
+neugenii,Wallaby,Meug_1.0
+ngalili,Upper Galilee mountains blind mole rat,S.galili_v1.0
+nleucogenys,Gibbon,Nleu_3.0
+nvison,American mink,NNQGG.v01
+oanatinus,Platypus,OANA5
+oaries,Sheep,Oar_v3.1
+oaureus,Blue tilapia,ASM587006v1
+ocuniculus,Rabbit,OryCun2.0
+odegus,Degu,OctDeg1.0
+ogarnettii,Bushbaby,OtoGar3
+olatipes,Japanese medaka HdrR,ASM223467v1
+olhni,Japanese medaka HNI,ASM223471v1
+olhsok,Japanese medaka HSOK,ASM223469v1
+omelastigma,Indian medaka,Om_v0.7.RACA
+oniloticus,Nile tilapia,O_niloticus_UMD_NMBU
+oprinceps,Pika,OchPri2.0-Ens
+pabelii,Orangutan,PPYG2
+panubis,Olive baboon,Panu_3.0
+pcapensis,Hyrax,proCap1
+pcinereus,Koala,phaCin_unsw_v4.1
+pcoquereli,Coquerel's sifaka,Pcoq_1.0
+pformosa,Amazon molly,Poecilia_formosa-5.1.2
+pkingsleyae,Paramormyrops kingsleyae,PKINGS_0.1
+platipinna,Sailfin molly,P_latipinna-1.0
+pmarinus,Lamprey,Pmarinus_7.0
+pmbairdii,Northern American deer mouse,HU_Pman_2.1
+pmexicana,Shortfin molly,P_mexicana-1.0
+pnattereri,Red-bellied piranha,Pygocentrus_nattereri-1.0.2
+pnyererei,Makobe Island cichlid,PunNye1.0
+ppaniscus,Bonobo,panpan1.1
+ppardus,Leopard,PanPar1.0
+pranga,Indian glassy fish,fParRan2.1
+preticulata,Guppy,Guppy_female_1.0_MT
+psimus,Greater bamboo lemur,Prosim_1.0
+psinensis,Chinese softshell turtle,PelSin_1.0
+ptaltaica,Tiger,PanTig1.0
+ptephrosceles,Ugandan red Colobus,ASM277652v2
+ptroglodytes,Chimpanzee,Pan_tro_3.0
+pvampyrus,Megabat,pteVam1
+pvitticeps,Central bearded dragon,pvi1.1
+rbieti,Black snub-nosed monkey,ASM169854v1
+rferrumequinum,Greater horseshoe bat,mRhiFer1_v1.p
+rnorvegicus,Rat,Rnor_6.0
+rroxellana,Golden snub-nosed monkey,Rrox_v1
+saraneus,Shrew,sorAra1
+saurata,Gilthead seabream,fSpaAur1.1
+sbboliviensis,Bolivian squirrel monkey,SaiBol1.0
+scanaria,Common canary,SCA1
+scerevisiae,Saccharomyces cerevisiae,R64-1-1
+sdumerili,Greater amberjack,Sdu_1.0
+sfasciatus,Jewelled blenny,fSalaFa1.1
+sformosus,Asian bonytongue,fSclFor1.1
+shabroptila,Kakapo,bStrHab1_v1.p
+sharrisii,Tasmanian devil,Devil_ref v7.0
+sldorsalis,Yellowtail amberjack,Sedor1
+smaximus,Turbot,ASM318616v1
+smerianae,Argentine black and white tegu,HLtupMer3
+sorbicularis,Orbiculate cardinalfish,fSphaOr1.1
+spunctatus,Tuatara,ASM311381v1
+ssalar,Atlantic salmon,ICSASG_v2
+ssbamei,Pig - Bamei,Bamei_pig_v1
+ssberkshire,Pig - Berkshire,Berkshire_pig_v1
+sscrofa,Pig,Sscrofa11.1
+sshampshire,Pig - Hampshire,Hampshire_pig_v1
+ssjinhua,Pig - Jinhua,Jinhua_pig_v1
+sslandrace,Pig - Landrace,Landrace_pig_v1
+sslargewhite,Pig - Largewhite,Large_White_v1
+ssmeishan,Pig - Meishan,Meishan_pig_v1
+sspietrain,Pig - Pietrain,Pietrain_pig_v1
+ssrongchang,Pig - Rongchang,Rongchang_pig_v1
+sstibetan,Pig - Tibetan,Tibetan_Pig_v2
+ssusmarc,Pig USMARC,USMARCv1.0
+sswuzhishan,Pig - Wuzhishan,minipig_v1.0
+strutta,River trout,fSalTru1.1
+tbelangeri,Tree Shrew,tupBel1
+tgelada,Gelada,Tgel_1.0
+tguttata,Zebra finch,bTaeGut1_v1.p
+tnigroviridis,Tetraodon,TETRAODON 8.0
+trubripes,Fugu,fTakRub1.2
+ttruncatus,Dolphin,turTru1
+uamericanus,American black bear,ASM334442v1
+umaritimus,Polar bear,UrsMar_1.0
+vpacos,Alpaca,vicPac1
+vursinus,Common wombat,bare-nosed_wombat_genome_assembly
+vvulpes,Red fox,VulVul2.2
+xmaculatus,Platyfish,X_maculatus-5.0-male
+xtropicalis,Tropical clawed frog,Xenopus_tropicalis_v9.1
