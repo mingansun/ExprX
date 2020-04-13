@@ -16,20 +16,28 @@ knitr::opts_chunk$set(
 )
 ```
 
+## 1 Introduction
 __ExprX__ is an R package to streamline interspecies differential expression
 analysis. Taking TPM or FPKM/RPKM files for samples from different species as
 input, it provides functions to handle all the necessary steps, including 
 data loading, ortholog matching, normalization, differential analysis and 
 visualization.
 
-Using RNA-Seq data for human and mouse brain, this vignette demonstrates how 
-to detect differentially expressed genes between species using ExprX. All 
-the involved steps are described below.
+ExprX is freely available at: https://github.com/mingansun/ExprX.
 
-Use the __install_git__ function from devtools package to install ExprX from
-GitHub:
+## 2 How to install ExprX
 
+__ExprX__ can be installed using the __install_git__ function from devtools
+package. However, it depends on several other R packages, which should be 
+installed first.
+
+To install ExprX and its dependencies:
 ```{r, eval = FALSE}
+# install several dependent packages from Bioconductor using BiocManager
+install.packages("BiocManager")
+BiocManager::install(c("biomaRt", "edgeR", "RankProd"))
+# install ExprX from GitHub using devtools
+install.packages("devtools")
 library(devtools)
 install_git("https://github.com/mingansun/ExprX")
 ```
@@ -42,8 +50,12 @@ library(ExprX)
 For more details about how to install and use __ExprX__, please refer to the
 website: https://github.com/mingansun/ExprX
 
+## 3 Apply ExprX for interspecies differential expression analysis
+Using RNA-Seq data for human and mouse brain, this vignette demonstrates how 
+to detect differentially expressed genes between species using ExprX. All 
+the involved steps are described below.
 
-## 1. Generate ExprX object by integrating interspecies expression data
+### 3.1 Generate ExprX object by integrating interspecies expression data
 
 By parsing the meta table (as a data frame or CSV file) which contains
 information about expression data files (usually contain TPM, FPKM or RPKM
@@ -68,7 +80,7 @@ hs2mm.data  <- make_ExprX_dataset(
 ```
 
 
-## 2. Determine the 1-to-1 orthologs among compared species
+### 3.2 Determine the 1-to-1 orthologs among compared species
 
 The 1-to-1 orthologs among species are constructed based on the homolog
 annotations from ENSEMBL database. Thus, only species available in
@@ -82,7 +94,7 @@ sp.lst <- list_species()
 head(sp.lst)
 ```
 
-### Match and save 1-to-1 orthologs among species
+#### Match and save 1-to-1 orthologs among species
 
 The __ortholog_match__ function invokes __biomaRt__ package to retrieve homolog
 annotation from ENSEMBL database, then matches 1-to-1 orthologs by reciprocal
@@ -98,7 +110,7 @@ hs2mm.orth <- ortholog_match("human", "mouse")
 saveRDS(hs2mm.orth, "hs2mm.orth.rds")
 ```
 
-### Load previously saved ortholog matching results from hard disk
+#### Load previously saved ortholog matching results from hard disk
 
 Below shows how to used __readRDS__ to load ortholog matching result that is
 previously saved on hard disk. Alternatively, the ortholog matching result can
@@ -129,7 +141,7 @@ hs2mm.orth.chrom <- summarize_ortholog_gene(hs2mm.orth, group = "chrom")
 head(hs2mm.orth.chrom)
 ```
 
-### Filter 1-to-1 orthologs to exclude specific groups of genes
+#### Filter 1-to-1 orthologs to exclude specific groups of genes
 
 In many cases, specific groups of genes (eg. pseudogenes or genes from sex chromosomes) are
 undesirable for gene expression comparison. The function __ortholog_filter__ enables the
@@ -157,7 +169,7 @@ dim(hs2mm.orth.flt[[1]])
 
 ```
 
-## 3. Integrate the 1-to-1 ortholog matching result to ExprX object
+### 3.3 Integrate the 1-to-1 ortholog matching result to ExprX object
 
 Take the original ExprX object generated with __make_ExprX_dataset__ and the
 ortholog matching data generated using __ortholog_match__ as input, the function
@@ -174,7 +186,7 @@ hs2mm.data <- ortholog_expression_merge(
 )
 ```
 
-## 4. Integrate the normalized expression data for 1-to-1 orthologs to ExprX object
+### 3.4 Integrate the normalized expression data for 1-to-1 orthologs to ExprX object
 
 Normalization of the expression data for 1:1 orthologs among species can be performed
 by using the __ortholog_expression_normalize__ function. Different normalization
@@ -194,7 +206,7 @@ hs2mm.data <- ortholog_expression_normalize(
 )
 ```
 
-## 5. Perform interspecies differential expression analysis
+### 3.5 Perform interspecies differential expression analysis
 
 Differential expression analysis of 1:1 orthologs between species can be 
 performed using the __ortholog_expression_compare__ function. Expression data of
@@ -235,7 +247,7 @@ hs2mm.mmHigh <- subset(hs2mm.deg, subset = log2foldChange < -1 & P_value < 0.05)
 head(hs2mm.mmHigh)
 ```
 
-## 6. Visualize differential expression analysis result
+### 3.6 Visualize differential expression analysis result
 
 The differential expression can be visualized as MA-plot or Volcano-plot, with
 differential genes highlighted by color. Below shows how to use the
@@ -257,3 +269,4 @@ ortholog_expression_plot(
   main = "Brain", xlim = c(-18,18), ylim = c(0, 3)
   )
 ```
+

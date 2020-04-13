@@ -305,17 +305,32 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
+<div id="introduction" class="section level2">
+<h2>1 Introduction</h2>
 <p><strong>ExprX</strong> is an R package to streamline interspecies differential expression analysis. Taking TPM or FPKM/RPKM files for samples from different species as input, it provides functions to handle all the necessary steps, including data loading, ortholog matching, normalization, differential analysis and visualization.</p>
-<p>Using RNA-Seq data for human and mouse brain, this vignette demonstrates how to detect differentially expressed genes between species using ExprX. All the involved steps are described below.</p>
-<p>Use the <strong>install_git</strong> function from devtools package to install ExprX from GitHub:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(devtools)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">install_git</span>(<span class="st">&quot;https://github.com/mingansun/ExprX&quot;</span>)</a></code></pre></div>
+<p>ExprX is freely available at: <a href="https://github.com/mingansun/ExprX" class="uri">https://github.com/mingansun/ExprX</a>.</p>
+</div>
+<div id="how-to-install-exprx" class="section level2">
+<h2>2 How to install ExprX</h2>
+<p><strong>ExprX</strong> can be installed using the <strong>install_git</strong> function from devtools package. However, it depends on several other R packages, which should be installed first.</p>
+<p>To install ExprX and its dependencies:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install several dependent packages from Bioconductor using BiocManager</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="kw">c</span>(<span class="st">&quot;biomaRt&quot;</span>, <span class="st">&quot;edgeR&quot;</span>, <span class="st">&quot;RankProd&quot;</span>))</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co"># install ExprX from GitHub using devtools</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(devtools)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">install_git</span>(<span class="st">&quot;https://github.com/mingansun/ExprX&quot;</span>)</a></code></pre></div>
 <p>To load the ExprX package:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(ExprX)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; Welcome to use ExprX!</span></a></code></pre></div>
 <p>For more details about how to install and use <strong>ExprX</strong>, please refer to the website: <a href="https://github.com/mingansun/ExprX" class="uri">https://github.com/mingansun/ExprX</a></p>
-<div id="generate-exprx-object-by-integrating-interspecies-expression-data" class="section level2">
-<h2>1. Generate ExprX object by integrating interspecies expression data</h2>
+</div>
+<div id="apply-exprx-for-interspecies-differential-expression-analysis" class="section level2">
+<h2>3 Apply ExprX for interspecies differential expression analysis</h2>
+<p>Using RNA-Seq data for human and mouse brain, this vignette demonstrates how to detect differentially expressed genes between species using ExprX. All the involved steps are described below.</p>
+<div id="generate-exprx-object-by-integrating-interspecies-expression-data" class="section level3">
+<h3>3.1 Generate ExprX object by integrating interspecies expression data</h3>
 <p>By parsing the meta table (as a data frame or CSV file) which contains information about expression data files (usually contain TPM, FPKM or RPKM values) for different species, the function <strong>make_ExprX_dataset</strong> can read these data files to create an object which contains the expression levels of the replicates of different species. The created ExprX object can also contain additional data such as orthologue pairs, normalized expression etc, and will be used by most of the subsequent analysis.</p>
 <p>To use <strong>make_ExprX_dataset</strong> to read CSV file with meta data for expression data files and compared species (ie. human and mouse) to create an ExprX object:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># meta table file</span></a>
@@ -343,8 +358,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt; human: 1042 genes from 3 files.</span></a>
 <a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt; mouse: 1037 genes from 3 files.</span></a></code></pre></div>
 </div>
-<div id="determine-the-1-to-1-orthologs-among-compared-species" class="section level2">
-<h2>2. Determine the 1-to-1 orthologs among compared species</h2>
+<div id="determine-the-1-to-1-orthologs-among-compared-species" class="section level3">
+<h3>3.2 Determine the 1-to-1 orthologs among compared species</h3>
 <p>The 1-to-1 orthologs among species are constructed based on the homolog annotations from ENSEMBL database. Thus, only species available in in ENSEMBL database (about 200 as checked on 2020-4-7) can be used for analysis.</p>
 <p>To use the <strong>list_species</strong> function to get the information (eg. species name, abbreviation) for all the species supported by ExprX:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">sp.lst &lt;-<span class="st"> </span><span class="kw">list_species</span>()</a>
@@ -356,8 +371,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 4  acitrinellus Midas cichlid               Midas_v5</span></a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 5  amelanoleuca         Panda                ailMel1</span></a>
 <a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 6    amexicanus Mexican tetra Astyanax_mexicanus-2.0</span></a></code></pre></div>
-<div id="match-and-save-1-to-1-orthologs-among-species" class="section level3">
-<h3>Match and save 1-to-1 orthologs among species</h3>
+<div id="match-and-save-1-to-1-orthologs-among-species" class="section level4">
+<h4>Match and save 1-to-1 orthologs among species</h4>
 <p>The <strong>ortholog_match</strong> function invokes <strong>biomaRt</strong> package to retrieve homolog annotation from ENSEMBL database, then matches 1-to-1 orthologs by reciprocal comparison. This step usually takes a few minutes - depending on the network speed). To speed up, the obtained ortholog data can be stored on hard disk with <strong>saveRDS</strong> for later use.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Match 1:1 orthologs between human and mouse</span></a>
 <a class="sourceLine" id="cb5-2" title="2">hs2mm.orth &lt;-<span class="st"> </span><span class="kw">ortholog_match</span>(<span class="st">&quot;human&quot;</span>, <span class="st">&quot;mouse&quot;</span>)</a>
@@ -365,8 +380,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb5-4" title="4"><span class="co"># Save the ortholog results on hard disk for later use</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="kw">saveRDS</span>(hs2mm.orth, <span class="st">&quot;hs2mm.orth.rds&quot;</span>)</a></code></pre></div>
 </div>
-<div id="load-previously-saved-ortholog-matching-results-from-hard-disk" class="section level3">
-<h3>Load previously saved ortholog matching results from hard disk</h3>
+<div id="load-previously-saved-ortholog-matching-results-from-hard-disk" class="section level4">
+<h4>Load previously saved ortholog matching results from hard disk</h4>
 <p>Below shows how to used <strong>readRDS</strong> to load ortholog matching result that is previously saved on hard disk. Alternatively, the ortholog matching result can be generated with <strong>ortholog_match</strong> as demonstrated above.</p>
 <p>The ortholog matching result includes information for each involved species, such as GeneID, GeneName, Chrom, GeneType and so on.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Load ortholog result with readRDS</span></a>
@@ -409,8 +424,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt; 13   286   546</span></a>
 <a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt; 14   572   588</span></a></code></pre></div>
 </div>
-<div id="filter-1-to-1-orthologs-to-exclude-specific-groups-of-genes" class="section level3">
-<h3>Filter 1-to-1 orthologs to exclude specific groups of genes</h3>
+<div id="filter-1-to-1-orthologs-to-exclude-specific-groups-of-genes" class="section level4">
+<h4>Filter 1-to-1 orthologs to exclude specific groups of genes</h4>
 <p>In many cases, specific groups of genes (eg. pseudogenes or genes from sex chromosomes) are undesirable for gene expression comparison. The function <strong>ortholog_filter</strong> enables the filtering of ortholog pairs based on gene type, chromosome, or provided gene list, as demonstrated below.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Filter orthologs by excluding genes from chromosomes X, Y and MT, and only keep</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="co"># protein_coding genes</span></a>
@@ -439,8 +454,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb10-7" title="7"><span class="co">#&gt; [1] 15275     4</span></a></code></pre></div>
 </div>
 </div>
-<div id="integrate-the-1-to-1-ortholog-matching-result-to-exprx-object" class="section level2">
-<h2>3. Integrate the 1-to-1 ortholog matching result to ExprX object</h2>
+<div id="integrate-the-1-to-1-ortholog-matching-result-to-exprx-object" class="section level3">
+<h3>3.3 Integrate the 1-to-1 ortholog matching result to ExprX object</h3>
 <p>Take the original ExprX object generated with <strong>make_ExprX_dataset</strong> and the ortholog matching data generated using <strong>ortholog_match</strong> as input, the function <strong>ortholog_expression_merge</strong> integrates together the expression data for all 1:1 orthologs among compared species. The integrated data will be appended to the original ExprX object and returned as an updated object. To be noted, for orthologs that don’t have matched expression data, they will be excluded from the returned data.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># Merge data</span></a>
 <a class="sourceLine" id="cb11-2" title="2">hs2mm.data &lt;-<span class="st"> </span><span class="kw">ortholog_expression_merge</span>(</a>
@@ -454,8 +469,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb11-10" title="10"><span class="co">#&gt; Discarded ortholog number: 14375</span></a>
 <a class="sourceLine" id="cb11-11" title="11"><span class="co">#&gt; Resulted  ortholog number: 900</span></a></code></pre></div>
 </div>
-<div id="integrate-the-normalized-expression-data-for-1-to-1-orthologs-to-exprx-object" class="section level2">
-<h2>4. Integrate the normalized expression data for 1-to-1 orthologs to ExprX object</h2>
+<div id="integrate-the-normalized-expression-data-for-1-to-1-orthologs-to-exprx-object" class="section level3">
+<h3>3.4 Integrate the normalized expression data for 1-to-1 orthologs to ExprX object</h3>
 <p>Normalization of the expression data for 1:1 orthologs among species can be performed by using the <strong>ortholog_expression_normalize</strong> function. Different normalization approaches are supported, including TMM, TMMwsp, RLE, upperquartile and quantile. The normalized data matrix will be appended to the original ExprX object and returned as the updated ExprX object.</p>
 <p>To normalize the expression data of 1:1 orthologs among samples using the TMM approach:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># Load required package</span></a>
@@ -467,8 +482,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb12-7" title="7">  <span class="dt">expr_data =</span> hs2mm.data, <span class="dt">method =</span> <span class="st">&quot;TMM&quot;</span></a>
 <a class="sourceLine" id="cb12-8" title="8">)</a></code></pre></div>
 </div>
-<div id="perform-interspecies-differential-expression-analysis" class="section level2">
-<h2>5. Perform interspecies differential expression analysis</h2>
+<div id="perform-interspecies-differential-expression-analysis" class="section level3">
+<h3>3.5 Perform interspecies differential expression analysis</h3>
 <p>Differential expression analysis of 1:1 orthologs between species can be performed using the <strong>ortholog_expression_compare</strong> function. Expression data of 1:1 orthologs after normalization are used for differential expression analysis. Statistics such as average expression level, log2foldChange and p-values are calculated and returned as a dataframe.</p>
 <p>Below shows how to perform interspecies differential analysis for 1:1 orthologs using RankProd approach. To be noted, the demo dataset is only for less than 1000 genes, thus only a couple of genes are called as differentlly expressed. If use full dataset, the number of called differential genes can be as many as several hundreds.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># Load required package</span></a>
@@ -559,8 +574,8 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb14-30" title="30"><span class="co">#&gt; 396 0.04757422</span></a>
 <a class="sourceLine" id="cb14-31" title="31"><span class="co">#&gt; 674 0.04757422</span></a></code></pre></div>
 </div>
-<div id="visualize-differential-expression-analysis-result" class="section level2">
-<h2>6. Visualize differential expression analysis result</h2>
+<div id="visualize-differential-expression-analysis-result" class="section level3">
+<h3>3.6 Visualize differential expression analysis result</h3>
 <p>The differential expression can be visualized as MA-plot or Volcano-plot, with differential genes highlighted by color. Below shows how to use the <strong>ortholog_expression_plot</strong> function to generate MA-plot and Volcano-plot, respectively.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Generate MA-plot</span></a>
 <a class="sourceLine" id="cb15-2" title="2"><span class="kw">ortholog_expression_plot</span>(</a>
@@ -574,6 +589,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <a class="sourceLine" id="cb16-4" title="4">  <span class="dt">main =</span> <span class="st">&quot;Brain&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">18</span>,<span class="dv">18</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb16-5" title="5">  )</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
 </div>
 
 
