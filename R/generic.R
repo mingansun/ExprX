@@ -4,32 +4,98 @@
 
 #' List all supported species
 #'
-#' Only species with genome available in ENSEMBL database are supported by
-#' ExprX. This function will show the information for all these species.
+#' Only species with genome available in ENSEMBL database are supported by ExprX.
+#' This function will show the information for all these species. To be noted,
+#' the species list can be retrieved from ENSEMBL database (require network
+#' connect) to make sure its is updated or from locally saved file which is
+#' regularly updated together with the package - depending on the user's choice.
+#'
+#' @param pattern
+#' The pattern to filtering the species list. The pattern will be searched
+#' against the common and scientifc names, with the information for matched
+#' species returned. To be noted, the matching is case insensitive.
+#'
+#' @param updated
+#' TRUE/FALSE. If set as TRUE, get the updated species list from ENSEMBL
+#' database (require network connection). If set as FALSE, the species list
+#' locally installed together with this package will be used. For most cases,
+#'  it is fine to use the locally saved species list. Defalt: FALSE
 #'
 #' @return
 #' Data frame, with the information for supported species
 #'
 #' @examples
+#'
+#' # list all species based on locally saved species list file
 #' list_species()
 #'
+#' # list all species based by fetching the newest species list from ENSEMBL
+#' list_species(updated = TRUE)
+#'
+#' # list all species with common or scientific name matching given pattern
+#' list_species(pattern = "human")
+#' list_species(pattern = "sapiens")
+#' list_species(pattern = "macaque")
+#'
 #' @export
-list_species <- function(){
+list_species <- function(pattern, updated = FALSE){
 
   opts <- options(stringsAsFactors = FALSE)
 
-  # read species list file from ExprX/extdata folder. If unexist, then try
-  # ExprX/inst/extdata folder. Exit with error if fail again
-  species_file <- paste0(path.package("ExprX"), "/extdata/species_list.csv")
-  if(!file.exists(species_file)){
-    species_file <- paste0(path.package("ExprX"), "/inst/extdata/species_list.csv")
+  if(missing(pattern)){
+    pattern = ""
   }
-  if(!file.exists(species_file)){
-    stop(getwd(), "\n", "Species list file doesn't exist: ", species_file)
+  if(missing(updated)){
+    updated = FALSE
+  }
+  if(!updated %in% c(TRUE, FALSE)){
+    stop("The parameter updated should be set as TRUE or FALSE")
   }
 
-  df_species <- read.csv(species_file)
-  return(df_species)
+  df_species <- NULL
+  if(updated == TRUE){
+    # load biomaRt
+    if("biomaRt" %in% rownames(installed.packages())){
+      library(biomaRt)
+    }
+    else{
+      stop("biomaRt cannot be loaded. Install it first.")
+    }
+    # fetch species list
+    ensembl <- useMart(biomart = "ensembl")
+    df_species <- listDatasets(mart = ensembl)
+    # reformat
+    colnames(df_species) <- c("Dataset", "Species", "Version")
+    df_species$Dataset <- sub("_gene_ensembl$","", df_species$Dataset)
+    df_species$Species <- sub("\\s+genes\\s+\\(.*$","", df_species$Species)
+
+    # save as local version
+    # write.csv(x = df_species, file = "Species_list.csv", row.names = FALSE, quote = FALSE)
+  }
+  else{
+    # read species list file from ExprX/extdata folder. If unexist, then try
+    # ExprX/inst/extdata folder. Exit with error if fail again
+    species_file <- paste0(path.package("ExprX"), "/extdata/Species_list.csv")
+
+    if(!file.exists(species_file)){
+      species_file <- paste0(path.package("ExprX"), "/inst/extdata/species_list.csv")
+    }
+    if(!file.exists(species_file)){
+      stop(getwd(), "\n", "Species list file doesn't exist: ", species_file)
+    }
+
+    df_species <- read.csv(species_file)
+  }
+
+  # reformat and filter species list
+  idx.flt <- sort(unique(c(
+   grep(pattern = pattern, df_species$Dataset, ignore.case = TRUE),
+   grep(pattern = pattern, df_species$Species, ignore.case = TRUE)
+   )))
+  df_species.flt <- df_species[idx.flt,]
+
+  # return
+  return(df_species.flt)
   on.exit(options(opts, add = TRUE))
 }
 
