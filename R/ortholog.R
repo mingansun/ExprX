@@ -54,7 +54,7 @@ ortholog_match <- function(species_1, species_2){
 
   # check if both species are supported (by comparing against list_species()),
   # and get their abbreviations which will be used by biomaRt
-  species.ok <- list_species()
+  species.ok <- list_species(updated = TRUE)
   species    <- c(tolower(species_1), tolower(species_2))
   species_abbr  <- NULL
   #species_full  <- NULL
