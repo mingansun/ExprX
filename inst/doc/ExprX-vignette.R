@@ -4,8 +4,11 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+## ---- eval = FALSE------------------------------------------------------------
+#  library(devtools)
+#  install_git("https://github.com/mingansun/ExprX")
+
 ## ----setup--------------------------------------------------------------------
-# load ExprX package
 library(ExprX)
 
 ## -----------------------------------------------------------------------------
@@ -97,16 +100,6 @@ head(hs2mm.hsHigh)
 # Determine significant differential genes (human<mouse) based on p-values and log2foldChange
 hs2mm.mmHigh <- subset(hs2mm.deg, subset = log2foldChange < -1 & P_value < 0.05)
 head(hs2mm.mmHigh)
-
-# Save differential genes on hard disk for later use
-write.table(
-  hs2mm.hsHigh, file = "human_high.inf.txt", 
-  quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE
-  )
-write.table(
-  hs2mm.mmHigh, file = "mouse_high.inf.txt", 
-  quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE
-  )
 
 ## ---- fig.width = 4, fig.height = 4-------------------------------------------
 # Generate MA-plot

@@ -1,6 +1,6 @@
 ---
 title: "ExprX-vignette"
-author: "Ming-an Sun, Yejun Wang, Todd Macfarlan"
+author: "Ming-an Sun, Yejun Wang, Linlin Zou, Todd Macfarlan"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -17,16 +17,31 @@ knitr::opts_chunk$set(
 ```
 
 __ExprX__ is an R package to streamline interspecies differential expression
-analysis. Using RNA-Seq data for human and mouse brain, this vignette
-demonstrates how to detect differentially expressed genes among species
-using ExprX package. All essential steps (eg. data import, ortholog matching,
-data normalization, differential analysis and visualization) are described below.
+analysis. Taking TPM or FPKM/RPKM files for samples from different species as
+input, it provides functions to handle all the necessary steps, including 
+data loading, ortholog matching, normalization, differential analysis and 
+visualization.
 
+Using RNA-Seq data for human and mouse brain, this vignette demonstrates how 
+to detect differentially expressed genes between species using ExprX. All 
+the involved steps are described below.
 
+Use the __install_git__ function from devtools package to install ExprX from
+GitHub:
+
+```{r, eval = FALSE}
+library(devtools)
+install_git("https://github.com/mingansun/ExprX")
+```
+
+To load the ExprX package:
 ```{r setup}
-# load ExprX package
 library(ExprX)
 ```
+
+For more details about how to install and use __ExprX__, please refer to the
+website: https://github.com/mingansun/ExprX
+
 
 ## 1. Generate ExprX object by integrating interspecies expression data
 
@@ -38,9 +53,8 @@ the replicates of different species. The created ExprX object can also contain
 additional data such as orthologue pairs, normalized expression etc, and will
 be used by most of the subsequent analysis.
 
-Below shows how to use __make_ExprX_dataset__ to read CSV file with meta data
-for expression data files and compared species (ie. human and mouse) to create
-an ExprX object.
+To use __make_ExprX_dataset__ to read CSV file with meta data for expression
+data files and compared species (ie. human and mouse) to create an ExprX object:
 
 ```{r}
 # meta table file
@@ -60,8 +74,8 @@ The 1-to-1 orthologs among species are constructed based on the homolog
 annotations from ENSEMBL database. Thus, only species available in
 in ENSEMBL database (about 200 as checked on 2020-4-7) can be used for analysis.
 
-Below show how to use the __list_species__ function to get the information (eg.
-species name, abbreviation) for all the species supported by ExprX.
+To use the __list_species__ function to get the information (eg. species name, 
+abbreviation) for all the species supported by ExprX:
 
 ```{r}
 sp.lst <- list_species()
@@ -132,7 +146,7 @@ hs2mm.orth.flt <- ortholog_filter(
 )
 ```
 
-Check the number of 1:1 orthologs before and after filtering
+To check the number of 1:1 orthologs before and after filtering:
 
 ```{r}
 # Before filtering
@@ -168,8 +182,7 @@ approaches are supported, including TMM, TMMwsp, RLE, upperquartile and quantile
 normalized data matrix will be appended to the original ExprX object and returned as
 the updated ExprX object.
 
-Below shows how to normalize the expression data of 1:1 orthologs among samples
-using the TMM approach.
+To normalize the expression data of 1:1 orthologs among samples using the TMM approach:
 
 ```{r}
 # Load required package
@@ -190,7 +203,10 @@ Statistics such as average expression level, log2foldChange and p-values are
 calculated and returned as a dataframe. 
 
 Below shows how to perform interspecies differential analysis for 1:1 orthologs
-using RankProd approach.
+using RankProd approach. To be noted, the demo dataset is only for less than
+1000 genes, thus only a couple of genes are called as differentlly expressed.
+If use full dataset, the number of called differential genes can be as many as
+several hundreds.
 
 ```{r}
 # Load required package
@@ -206,8 +222,8 @@ hs2mm.deg <- hs2mm.deg[order(hs2mm.deg$P_value),]
 head(hs2mm.deg)
 ```
 
-Below shows how to determine differential genes (based on cufoff of p-value and
-log2foldChange) and save them on hard disk
+To determine differential genes (based on cufoff of p-value and log2foldChange)
+which can be saved for downstream analysis:
 
 ```{r}
 # Determine significant differential genes (human>mouse) based on p-values and log2foldChange
@@ -217,16 +233,6 @@ head(hs2mm.hsHigh)
 # Determine significant differential genes (human<mouse) based on p-values and log2foldChange
 hs2mm.mmHigh <- subset(hs2mm.deg, subset = log2foldChange < -1 & P_value < 0.05)
 head(hs2mm.mmHigh)
-
-# Save differential genes on hard disk for later use
-write.table(
-  hs2mm.hsHigh, file = "human_high.inf.txt", 
-  quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE
-  )
-write.table(
-  hs2mm.mmHigh, file = "mouse_high.inf.txt", 
-  quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE
-  )
 ```
 
 ## 6. Visualize differential expression analysis result
