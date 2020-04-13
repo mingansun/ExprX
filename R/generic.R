@@ -75,7 +75,7 @@ list_species <- function(pattern, updated = FALSE){
   else{
     # read species list file from ExprX/extdata folder. If unexist, then try
     # ExprX/inst/extdata folder. Exit with error if fail again
-    species_file <- paste0(path.package("ExprX"), "/extdata/Species_list.csv")
+    species_file <- paste0(path.package("ExprX"), "/extdata/species_list.csv")
 
     if(!file.exists(species_file)){
       species_file <- paste0(path.package("ExprX"), "/inst/extdata/species_list.csv")
