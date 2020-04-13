@@ -12,13 +12,9 @@ installed first.
 
 __To install ExprX and its dependencies:__
 
-\# install several dependent packages from Bioconductor using BiocManager
-
 install.packages("BiocManager")
 
 BiocManager::install(c("biomaRt", "edgeR", "RankProd"))
-
-\# install ExprX from GitHub using devtools
 
 install.packages("devtools")
 
