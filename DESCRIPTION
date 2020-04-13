@@ -2,23 +2,21 @@ Package: ExprX
 Type: Package
 Title: Interspecies differential expression analysis of orthologous
         genes
-Version: 0.0.0.9000
+Version: 0.0.2
 Authors@R: c(
     person("Mingan", "Sun", email="mingansun@yahoo.com", role = c("aut","cre")),
-    person("Yejun", "Wang", role = c("ctb"))
+    person("Yejun", "Wang", role = c("ctb")),
+    person("Linlin", "Zou", role = c("ctb")),
+    person("Todd", "Macfarlan", role = c("ctb"))
     )
 Maintainer: Ming-an Sun <mingansun@gmail.com>
-Description: ExprX is a R package to faciliate interspecies 
-    differential expression analysis. It takes TPM, FPKM or
-    RPKM values of different species as input, determine
-    1-to-1 orthologes among species, perform normalization,
-    and infer differential genes. It can also perform some
-    downstream analysis including result visualization.
+Description: ExprX is a R package to streamline interspecies differential expression
+    analysis. Taking TPM or FPKM/RPKM files for samples from different species as
+    input, it provides functions to handle all necessary steps, including data loading,
+    ortholog matching, normalization, differential analysis and visualization.
 License: MIT
-Imports: biomaRt (>= 2.42.0), DESeq2 (>= 1.26.0), edgeR (>= 3.28.0),
-        ggplot2 (>= 3.2.1), pheatmap (>= 1.0.12), RankProd (>= 3.12.0),
-        RColorBrewer (>= 1.1.2), stringr (>= 1.4.0), genefilter,
-        locfit, geneplotter, limma
+Imports: biomaRt (>= 2.42.0), edgeR (>= 3.28.0), RankProd (>= 3.12.0),
+        stringr (>= 1.4.0), limma (>= 3.42.2)
 Suggests: testthat, knitr, rmarkdown
 Depends: R (>= 3.5.1)
 URL: https://github.com/mingansun/ExprX
@@ -26,7 +24,7 @@ Encoding: UTF-8
 LazyData: true
 Date/Publication: 2020-2-24
 NeedsCompilation: no
-Packaged: 2020-04-07 13:30:20 UTC; mingansun
+Packaged: 2020-04-13 08:29:22 UTC; mingansun
 Author: Ming-an Sun [aut, cre],
   Yejun Wang [ctb]
 RoxygenNote: 7.0.2
