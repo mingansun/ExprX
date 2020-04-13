@@ -10,8 +10,7 @@ __ExprX__ can be installed using the __install_git__ function from devtools
 package. However, it depends on several other R packages, which should be 
 installed first.
 
-__To install ExprX and its dependencies:
-
+__To install ExprX and its dependencies:__
 \# install several dependent packages from Bioconductor using BiocManager
 install.packages("BiocManager")
 BiocManager::install(c("biomaRt", "edgeR", "RankProd"))
@@ -19,9 +18,7 @@ BiocManager::install(c("biomaRt", "edgeR", "RankProd"))
 install.packages("devtools")
 devtools::install_git("https://github.com/mingansun/ExprX")
 
-
-__To load the ExprX package:
-
+__To load the ExprX package:__
 library(ExprX)
 
 ## How to use ExprX
