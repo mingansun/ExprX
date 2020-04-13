@@ -57,15 +57,15 @@ ortholog_match <- function(species_1, species_2){
   species.ok <- list_species()
   species    <- c(tolower(species_1), tolower(species_2))
   species_abbr  <- NULL
-  species_full  <- NULL
+  #species_full  <- NULL
 
   message("Get species name abbreviation to be used by biomaRt ...")
   for(sp in seq_along(species)) {
-    if(! species[sp] %in% species.ok$Species) {
+    if(! species[sp] %in% tolower(species.ok$Species)) {
       stop(species[sp], " is not supported. Use list_species() to list all supported species.")
     }
-    species_abbr[sp] <- species.ok$AbbrName[which(species.ok$Species == species[sp])]
-    species_full[sp] <- species.ok$FullName[which(species.ok$Species == species[sp])]
+    species_abbr[sp] <- species.ok$Dataset[which(tolower(species.ok$Species) == species[sp])]
+    #species_full[sp] <- species.ok$FullName[which(species.ok$Species == species[sp])]
     message(species[sp], " => ", species_abbr[sp])
   }
 
@@ -211,7 +211,7 @@ ortholog_match <- function(species_1, species_2){
   names(hom.pair.inf) <- species
   attr(hom.pair.inf, "Species")     <- species
   attr(hom.pair.inf, "SpeciesAbbr") <- species_abbr
-  attr(hom.pair.inf, "SpeciesFull") <- species_full
+  #attr(hom.pair.inf, "SpeciesFull") <- species_full
 
   return(hom.pair.inf)
 }
