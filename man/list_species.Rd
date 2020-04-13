@@ -4,16 +4,39 @@
 \alias{list_species}
 \title{List all supported species}
 \usage{
-list_species()
+list_species(pattern, updated = FALSE)
+}
+\arguments{
+\item{pattern}{The pattern to filtering the species list. The pattern will be searched
+against the common and scientifc names, with the information for matched
+species returned. To be noted, the matching is case insensitive.}
+
+\item{updated}{TRUE/FALSE. If set as TRUE, get the updated species list from ENSEMBL
+database (require network connection). If set as FALSE, the species list
+locally installed together with this package will be used. For most cases,
+ it is fine to use the locally saved species list. Defalt: FALSE}
 }
 \value{
 Data frame, with the information for supported species
 }
 \description{
-Only species with genome available in ENSEMBL database are supported by
-ExprX. This function will show the information for all these species.
+Only species with genome available in ENSEMBL database are supported by ExprX.
+This function will show the information for all these species. To be noted,
+the species list can be retrieved from ENSEMBL database (require network
+connect) to make sure its is updated or from locally saved file which is
+regularly updated together with the package - depending on the user's choice.
 }
 \examples{
+
+# list all species based on locally saved species list file
 list_species()
+
+# list all species based by fetching the newest species list from ENSEMBL
+list_species(updated = TRUE)
+
+# list all species with common or scientific name matching given pattern
+list_species(pattern = "human")
+list_species(pattern = "sapiens")
+list_species(pattern = "macaque")
 
 }
