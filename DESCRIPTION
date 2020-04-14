@@ -2,7 +2,7 @@ Package: ExprX
 Type: Package
 Title: Interspecies differential expression analysis of orthologous
         genes
-Version: 0.0.3
+Version: 1.0.3
 Authors@R: c(
     person("Mingan", "Sun", email="mingansun@yahoo.com", role = c("aut","cre")),
     person("Yejun", "Wang", role = c("ctb")),
