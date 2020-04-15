@@ -2,7 +2,7 @@ Package: ExprX
 Type: Package
 Title: Interspecies differential expression analysis of orthologous
         genes
-Version: 1.0.3
+Version: 1.0.2
 Authors@R: c(
     person("Mingan", "Sun", email="mingansun@yahoo.com", role = c("aut","cre")),
     person("Yejun", "Wang", role = c("ctb")),
@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: true
 Date/Publication: 2020-2-24
 NeedsCompilation: no
-Packaged: 2020-04-13 13:07:12 UTC; mingansun
+Packaged: 2020-04-15 00:39:15 UTC; mingansun
 Author: Ming-an Sun [aut, cre],
   Yejun Wang [ctb]
 RoxygenNote: 7.1.0
