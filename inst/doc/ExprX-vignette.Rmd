@@ -1,6 +1,6 @@
 ---
 title: "ExprX-vignette"
-author: "Ming-an Sun, Yejun Wang, Linlin Zou, Todd Macfarlan"
+author: "Ming-an Sun, Yejun Wang, Linlin Zou, Yanhua Li, Guoqiang Zhu, Todd Macfarlan"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -102,7 +102,7 @@ comparison. This step usually takes a few minutes - depending on the network
 speed). To speed up, the obtained ortholog data can be stored on hard disk with
 __saveRDS__ for later use.
 
-```{r, eval = FALSE}
+```{r}
 # Match 1:1 orthologs between human and mouse
 hs2mm.orth <- ortholog_match("human", "mouse")
 
