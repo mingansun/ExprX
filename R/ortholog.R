@@ -272,7 +272,7 @@ ortholog_filter <- function(x, genetype_include, genetype_exclude, chrom_include
   if(
     missing(genetype_include) & missing(genetype_exclude) &
     missing(chrom_include)    & missing(chrom_exclude   ) &
-    missing(genetype_include) & missing(geneid_exclude  )
+    missing(geneid_include)   & missing(geneid_exclude  )
     ) {
     stop("No filtering parameter is given.")
   }
