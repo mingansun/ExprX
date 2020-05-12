@@ -4,7 +4,7 @@
 \alias{ortholog_match}
 \title{Match 1-to-1 ortholog between two species}
 \usage{
-ortholog_match(species_1, species_2)
+ortholog_match(species_1, species_2, host)
 }
 \arguments{
 \item{species_1}{Name of species 1 (eg human, mouse etc). Use \code{\link{list_species}} to
@@ -12,6 +12,8 @@ get all supported species.}
 
 \item{species_2}{Name of species 2 (eg human, mouse etc). Use \code{\link{list_species}} to
 get all supported species.}
+
+\item{host}{ENSEMBL host (mirror) to connect to. Default: www.ensembl.org}
 }
 \value{
 List with information for 1-to-1 ortholog pairs. The list has two data
@@ -30,8 +32,15 @@ are supported. Use \code{\link{list_species}} to get the information for
 all supported species.
 }
 \examples{
+
+# Get 1:1 orthologs between different pairs of species
 hs2mm.orth <- ortholog_match("human", "mouse")
 hs2gg.orth <- ortholog_match("human", "chicken")
 hs2dr.orth <- ortholog_match("human", "zebrafish")
+
+# Choose to use different host (mirrors) for ENSEMBL
+hs2mm.orth <- ortholog_match("human", "mouse", host = "www.ensembl.org")
+hs2mm.orth <- ortholog_match("human", "mouse", host = "useast.ensembl.org")
+hs2mm.orth <- ortholog_match("human", "mouse", host = "asia.ensembl.org")
 
 }
