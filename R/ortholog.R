@@ -23,6 +23,8 @@
 #' @param species_2
 #' Name of species 2 (eg human, mouse etc). Use \code{\link{list_species}} to
 #' get all supported species.
+#' @param host
+#' ENSEMBL host (mirror) to connect to. Default: www.ensembl.org
 #'
 #' @return
 #' List with information for 1-to-1 ortholog pairs. The list has two data
@@ -32,12 +34,19 @@
 #' attached to the return list.
 #'
 #' @examples
+#'
+#' # Get 1:1 orthologs between different pairs of species
 #' hs2mm.orth <- ortholog_match("human", "mouse")
 #' hs2gg.orth <- ortholog_match("human", "chicken")
 #' hs2dr.orth <- ortholog_match("human", "zebrafish")
 #'
+#' # Choose to use different host (mirrors) for ENSEMBL
+#' hs2mm.orth <- ortholog_match("human", "mouse", host = "www.ensembl.org")
+#' hs2mm.orth <- ortholog_match("human", "mouse", host = "useast.ensembl.org")
+#' hs2mm.orth <- ortholog_match("human", "mouse", host = "asia.ensembl.org")
+#'
 #' @export
-ortholog_match <- function(species_1, species_2){
+ortholog_match <- function(species_1, species_2, host){
 
   # check species names
   if(missing(species_1) & missing(species_2)){
@@ -77,7 +86,13 @@ ortholog_match <- function(species_1, species_2){
     stop("biomaRt cannot be loaded. Install it first.")
   }
 
-  mart=useMart("ensembl", verbose = TRUE)
+  ## connect to ENSEMBL
+  if(missing(host)){
+    mart = useMart("ensembl", verbose = TRUE)
+  }
+  else{
+    mart = useMart("ensembl", verbose = TRUE, host = host)
+  }
 
   # biomaRt connection
   conn     <- list()
@@ -320,7 +335,7 @@ ortholog_filter <- function(x, genetype_include, genetype_exclude, chrom_include
 
     # gene ID
     if(!missing(geneid_include)){
-      flt <- d$GeneID %in% gendid_include
+      flt <- d$GeneID %in% geneid_include
       flt.rule <- flt.rule & flt
       message("geneid_include   matches:\t", sum(flt))
     }
