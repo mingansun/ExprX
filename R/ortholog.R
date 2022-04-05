@@ -24,7 +24,11 @@
 #' Name of species 2 (eg human, mouse etc). Use \code{\link{list_species}} to
 #' get all supported species.
 #' @param host
-#' ENSEMBL host (mirror) to connect to. Default: www.ensembl.org
+#' ENSEMBL host (mirror) to connect to. Default: www.ensembl.org. By default, 
+#' bioMart uses the latest releases of genome assemblies from the ENSEMBL database,
+#' which may not match the genome version of given data sometimes. Earlier releases
+#' can be used by specifying an archieved host address, which can be  found from
+#' the ENSEMBL website.
 #'
 #' @return
 #' List with information for 1-to-1 ortholog pairs. The list has two data
@@ -45,6 +49,8 @@
 #' hs2mm.orth <- ortholog_match("human", "mouse", host = "useast.ensembl.org")
 #' hs2mm.orth <- ortholog_match("human", "mouse", host = "asia.ensembl.org")
 #'
+#' # Choose to use an archieved host for ENSEMBL (it used GRCh38 for human, GRCm38 for mouse, etc)
+#' hs2mm.orth <- ortholog_match("human", "mouse", host = "nov2020.archive.ensembl.org/index.html")
 #' @export
 ortholog_match <- function(species_1, species_2, host){
 
