@@ -604,6 +604,7 @@ read_data_matrix_from_file <- function(file_list, col_geneid, col_value, header 
   if(missing(geneid_list)) {
     d <- read.table(file[1], header = TRUE)
     id.lst <- d[,col_geneid]
+    id.lst <- sub("_.*$", "", id.lst)
   }
   else{
     if(is.factor(geneid_list)){
