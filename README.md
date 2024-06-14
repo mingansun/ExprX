@@ -31,4 +31,4 @@ expression analysis. The PDF version of Vignette can be downloaded from:
 https://github.com/mingansun/ExprX/blob/master/inst/doc/ExprX-vignette.pdf
 
 ## Citation:
-Ming-an Sun et al., ExprX - an R package to streamline interspecies differential gene expression analysis.
+Sun MA, Wolf G, Wang Y, Senft AD, Ralls S, Jin J, Dunn-Fletcher CE, Muglia LJ, Macfarlan TS. 2021. Endogenous retroviruses drive lineage-specific regulatory evolution across primate and rodent placentae. Mol Biol Evol 38: 4992–5004.
