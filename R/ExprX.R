@@ -1,7 +1,7 @@
 #' ExprX: a package for interspecies differential expression analysis
 #'
-#' The package performs several steps for interspecies differential analysis
-#' ortholog matching, normalization, differential calling, visualization.
+#' The package performs several steps for interspecies differential analysis, including
+#' ortholog matching, data normalization, differential expression analysis, and result visualization.
 #'
 #' @section ExprX functions:
 #'
