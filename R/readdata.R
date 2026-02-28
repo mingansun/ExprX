@@ -91,7 +91,7 @@ make_ExprX_dataset <- function(x, data_dir){
 
   ## display the meta data after formatting and sorting
   meta.df  <- meta.df[order(meta.df$Species, meta.df$RepIndex),]
-  meta.fmt <- meta.df[,c(2:ncol(meta.df),1)]
+  meta.fmt <- meta.df[,c(2:ncol(meta.df), 1)]
   message(
     paste(colnames(meta.fmt), collapse = "\t"), "\n",
     paste(apply(meta.fmt, 1, function(x){paste(x, collapse = "\t")}), collapse = "\n")
@@ -130,7 +130,7 @@ make_ExprX_dataset <- function(x, data_dir){
   for(i in seq_along(meta.df$File)){
     f <- meta.df$File[i]
     # adjust if relative directory is specified for the data files (ie. not started with /)
-    f.abs <- grep("^/",f)
+    f.abs <- grep("^/", f)
     if(length(f.abs) == 0){
       f <- paste0(data_dir, '/', f)
     }
